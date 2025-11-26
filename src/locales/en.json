@@ -25,6 +25,7 @@
     "receipt": "Receipt",
     "transactionId": "Transaction ID",
     "showTax": "Show Tax",
+    "showTransactionId": "Show Transaction ID",
     "date": "Date",
     "time": "Time",
     "add": "Add",

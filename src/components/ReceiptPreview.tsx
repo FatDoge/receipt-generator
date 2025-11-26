@@ -23,6 +23,7 @@ interface ReceiptPreviewProps {
       thermalTexture: string;
       showTip: boolean;
       showTax: boolean;
+      showTransactionId: boolean;
       itemLabel: string;
       priceLabel: string;
       quantityLabel: string;
@@ -130,7 +131,9 @@ const ReceiptPreview: React.FC<ReceiptPreviewProps> = ({ data, isPrinting, total
               <p className="text-sm text-gray-600">
                 {data.date} {data.time}
               </p>
-              <p className="text-sm text-gray-600">{t('receipt')} #{data.receiptNumber}</p>
+              {data.template.showTransactionId && (
+                <p className="text-sm text-gray-600">{t('receipt')} #{data.receiptNumber}</p>
+              )}
               
               {/* Template-specific fields */}
               {data.template.fields.roomNumber && data.roomNumber && (
@@ -206,24 +209,28 @@ const ReceiptPreview: React.FC<ReceiptPreviewProps> = ({ data, isPrinting, total
                     <span className="text-gray-500">(**** {data.paymentInfo.cardLastFour})</span>
                   )}
                 </div>
-                <p className="text-xs text-gray-500">
-                  {t('transactionId')}: {data.paymentInfo.transactionId}
-                </p>
+                {data.template.showTransactionId && (
+                  <p className="text-xs text-gray-500">
+                    {t('transactionId')}: {data.paymentInfo.transactionId}
+                  </p>
+                )}
               </div>
             </div>
 
             {/* Footer */}
             <div className="text-center space-y-4 mt-8">
-              <div className="flex justify-center">
-                <Barcode
-                  value={data.receiptNumber}
-                  width={1.5}
-                  height={50}
-                  fontSize={12}
-                  margin={0}
-                  background="transparent"
-                />
-              </div>
+              {data.template.showTransactionId && (
+                <div className="flex justify-center">
+                  <Barcode
+                    value={data.receiptNumber}
+                    width={1.5}
+                    height={50}
+                    fontSize={12}
+                    margin={0}
+                    background="transparent"
+                  />
+                </div>
+              )}
               <p className="text-sm text-gray-600">{t(data.footerText) || t('thankYou')}</p>
               <p className="text-xs text-gray-400 mt-2">{t('generatedBy')}</p>
             </div>

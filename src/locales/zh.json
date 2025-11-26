@@ -24,6 +24,7 @@
     "transactionId": "交易ID",
     "receipt": "收据",
     "showTax": "显示税费",
+    "showTransactionId": "显示交易单号",
     "date": "日期",
     "time": "时间",
     "add": "添加",

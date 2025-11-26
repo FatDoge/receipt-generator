@@ -34,6 +34,8 @@ export interface ReceiptTemplate {
   thermalTexture: string;
   showTip: boolean;
   showTax: boolean;
+  // 新增：是否显示交易单号
+  showTransactionId: boolean;
   itemLabel: string;
   priceLabel: string;
   quantityLabel: string;

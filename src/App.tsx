@@ -410,6 +410,22 @@ function App() {
                       </div>
                     )}
                   </div>
+                  {/* 新增：是否显示交易单号 */}
+                  <div className="flex items-center gap-2">
+                    <input
+                      type="checkbox"
+                      id="showTransactionId"
+                      checked={receiptData.template.showTransactionId}
+                      onChange={(e) => setReceiptData(prev => ({
+                        ...prev,
+                        template: { ...prev.template, showTransactionId: e.target.checked }
+                      }))}
+                      className="rounded border border-gray-300 text-blue-600 dark:border-gray-600 dark:bg-gray-700 focus:ring-2 focus:ring-blue-500/20 dark:focus:ring-blue-400/20 px-2 py-1 transition-colors duration-200"
+                    />
+                    <label htmlFor="showTransactionId" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                      {t('showTransactionId')}
+                    </label>
+                  </div>
                 </div>
               </div>
 
